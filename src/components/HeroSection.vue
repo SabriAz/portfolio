@@ -159,13 +159,16 @@ h1 {
   flex-direction: column;
   gap: 2rem;
   animation: fadeUp 0.6s 0.2s ease both;
+  align-items: flex-start;
 }
 
 .slider {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
-  aspect-ratio: 4/5;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 3/4;
   background: var(--bg3);
 }
 
