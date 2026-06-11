@@ -178,7 +178,8 @@ h1 {
   overflow: hidden;
   border-radius: 16px;
   width: 100%;
-  aspect-ratio: 4/5;
+  max-width: 350px;
+  aspect-ratio: 4 / 5;
   background: var(--bg3);
 }
 
