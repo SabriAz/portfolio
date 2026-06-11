@@ -1,37 +1,40 @@
 <template>
   <section id="hero" class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">Software developer & student</p>
-      <h1>
-        <span class="line-normal">Hello, I'm</span>
-        <span class="line-name">Sabri<span class="dot">.</span></span>
-      </h1>
-      <p class="desc">
-        I build full-stack web apps and mobile experiences —<br />
-        thoughtful code, clean interfaces, real results.
-      </p>
-      <div class="cta-row">
-        <a href="#projects" class="btn-primary">See my work</a>
-        <a href="#contact" class="btn-text">Get in touch →</a>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="slider">
-        <div class="slides" :style="{ transform: `translateX(-${current * 100}%)` }">
-          <img v-for="(img, i) in images" :key="i" :src="img" :alt="`Photo ${i + 1}`" />        </div>
-        <div class="dots">
-          <button
-              v-for="n in 4"
-              :key="n"
-              :class="['dot', { active: current === n - 1 }]"
-              @click="current = n - 1"
-          />
+    <div class="hero-container">
+      <div class="hero-left">
+        <p class="eyebrow">Software developer & student</p>
+        <h1>
+          <span class="line-normal">Hello, I'm</span>
+          <span class="line-name">Sabri<span class="accent-dot">.</span></span>
+        </h1>
+        <p class="desc">
+          I build full-stack web apps and mobile experiences —<br />
+          thoughtful code, clean interfaces, real results.
+        </p>
+        <div class="cta-row">
+          <a href="#projects" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-text">Get in touch →</a>
         </div>
       </div>
-      <div class="bio">
-        <p>I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden. I build full-stack apps, mobile experiences, and everything in between.</p>
-        <p>Outside of code I'm into cooking, gaming, and good music — I bring that same curiosity to everything I build.</p>
+
+      <div class="hero-right">
+        <div class="slider">
+          <div class="slides" :style="{ transform: `translateX(-${current * 100}%)` }">
+            <img v-for="(img, i) in images" :key="i" :src="img" :alt="`Photo ${i + 1}`" />
+          </div>
+          <div class="dots">
+            <button
+                v-for="n in 4"
+                :key="n"
+                :class="['dot-btn', { active: current === n - 1 }]"
+                @click="current = n - 1"
+            />
+          </div>
+        </div>
+        <div class="bio">
+          <p>I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden. I build full-stack apps, mobile experiences, and everything in between.</p>
+          <p>Outside of code I'm into cooking, gaming, and good music — I bring that same curiosity to everything I build.</p>
+        </div>
       </div>
     </div>
 
@@ -63,19 +66,27 @@ onUnmounted(() => clearInterval(timer))
 
 <style scoped>
 .hero {
+  width: 100%;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4rem;
-  padding: 10rem 4rem 6rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0;
   position: relative;
-  overflow: hidden;
 }
 
-.hero-inner { display: flex; flex-direction: column; }
+.hero-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.hero-left { display: flex; flex-direction: column; }
 
 .eyebrow {
   font-family: var(--font-mono);
@@ -96,7 +107,7 @@ h1 {
 
 .line-normal {
   font-family: var(--font-head);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 300;
   font-style: italic;
   color: var(--muted);
@@ -106,20 +117,20 @@ h1 {
 
 .line-name {
   font-family: var(--font-head);
-  font-size: clamp(4rem, 10vw, 7.5rem);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
   font-weight: 600;
   color: var(--text);
   line-height: 0.9;
   letter-spacing: -0.04em;
 }
 
-.dot { color: var(--accent); }
+.accent-dot { color: var(--accent); }
 
 .desc {
-  font-size: 1rem;
+  font-size: 0.975rem;
   color: var(--muted);
   line-height: 1.8;
-  max-width: 420px;
+  max-width: 400px;
   font-weight: 300;
   margin-bottom: 2.5rem;
   animation: fadeUp 0.6s 0.2s ease both;
@@ -158,9 +169,8 @@ h1 {
 .hero-right {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
   animation: fadeUp 0.6s 0.2s ease both;
-  align-items: flex-start;
 }
 
 .slider {
@@ -168,8 +178,7 @@ h1 {
   overflow: hidden;
   border-radius: 16px;
   width: 100%;
-  max-width: 380px;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/5;
   background: var(--bg3);
 }
 
@@ -181,7 +190,7 @@ h1 {
 
 .slides img {
   min-width: 100%;
-  width: 100%;
+  flex-shrink: 0;
   height: 100%;
   object-fit: cover;
   object-position: center top;
@@ -196,7 +205,7 @@ h1 {
   gap: 6px;
 }
 
-.dots .dot {
+.dot-btn {
   width: 6px;
   height: 6px;
   border-radius: 100px;
@@ -207,7 +216,7 @@ h1 {
   transition: background 0.3s, width 0.3s;
 }
 
-.dots .dot.active {
+.dot-btn.active {
   background: #fff;
   width: 20px;
 }
@@ -217,13 +226,13 @@ h1 {
   color: var(--muted);
   line-height: 1.8;
   font-weight: 300;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .hero-deco {
   position: absolute;
   bottom: 3rem;
-  right: 0;
+  right: 4rem;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -244,10 +253,11 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .hero {
+  .hero { padding: 8rem 0 4rem; }
+  .hero-container {
     grid-template-columns: 1fr;
-    padding: 8rem 1.75rem 5rem;
-    gap: 3rem;
+    padding: 0 1.75rem;
+    gap: 2.5rem;
   }
   .hero-right { order: -1; }
   .slider { aspect-ratio: 3/2; }
