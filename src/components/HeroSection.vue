@@ -88,11 +88,11 @@ function next() {
 
 function resetTimer() {
   clearInterval(timer)
-  timer = setInterval(next, 12000)
+  timer = setInterval(next, 9000)
 }
 
 onMounted(() => {
-  timer = setInterval(next, 12000)
+  timer = setInterval(next, 9000)
 })
 
 onUnmounted(() => {
