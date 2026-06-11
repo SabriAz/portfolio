@@ -280,14 +280,36 @@ h1 {
 }
 
 @media (max-width: 900px) {
+
+  .hero {
+    min-height: auto;
+    padding: 7rem 0 4rem;
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
-    padding: 0 1.75rem;
     gap: 2.5rem;
+    padding: 0 1.75rem;
   }
 
   .hero-right {
     order: -1;
+    align-items: center;
+  }
+
+  .slider {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .bio {
+    text-align: left;
+    max-width: 420px;
+  }
+
+  .cta-row {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .hero-deco {
