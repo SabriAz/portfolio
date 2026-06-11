@@ -147,6 +147,14 @@
   background: var(--bg2);
 }
 
+.cloud {
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .skills {
     padding: 5rem 1.75rem;
