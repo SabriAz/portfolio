@@ -60,14 +60,14 @@ function next() {
   current.value = (current.value + 1) % 4
 }
 
-onMounted(() => { timer = setInterval(next, 3500) })
+onMounted(() => { timer = setInterval(next, 7000) })
 onUnmounted(() => clearInterval(timer))
 </script>
 
 <style scoped>
 .hero {
+  max-height: 100vh;
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
