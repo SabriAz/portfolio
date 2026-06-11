@@ -292,11 +292,6 @@ h1 {
     padding: 0 1.75rem;
   }
 
-  .hero-right {
-    order: -1;
-    align-items: center;
-  }
-
   .slider {
     max-width: 320px;
     width: 100%;
