@@ -1,7 +1,7 @@
 <template>
   <section id="hero" class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">Full-stack developer & student</p>
+      <p class="eyebrow">Software developer & student</p>
       <h1>
         <span class="line-normal">Hello, I'm</span>
         <span class="line-name">Sabri<span class="dot">.</span></span>
@@ -15,6 +15,27 @@
         <a href="#contact" class="btn-text">Get in touch →</a>
       </div>
     </div>
+
+    <div class="hero-right">
+      <div class="slider">
+        <div class="slides" :style="{ transform: `translateX(-${current * 100}%)` }">
+          <img v-for="n in 4" :key="n" :src="`/src/assets/sabri_${n}.jpeg`" :alt="`Photo ${n}`" />
+        </div>
+        <div class="dots">
+          <button
+              v-for="n in 4"
+              :key="n"
+              :class="['dot', { active: current === n - 1 }]"
+              @click="current = n - 1"
+          />
+        </div>
+      </div>
+      <div class="bio">
+        <p>I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden. I build full-stack apps, mobile experiences, and everything in between.</p>
+        <p>Outside of code I'm into cooking, gaming, and good music — I bring that same curiosity to everything I build.</p>
+      </div>
+    </div>
+
     <div class="hero-deco">
       <div class="deco-line"></div>
       <span class="deco-label">based in Leiden, NL</span>
@@ -22,17 +43,34 @@
   </section>
 </template>
 
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const current = ref(0)
+let timer
+
+function next() {
+  current.value = (current.value + 1) % 4
+}
+
+onMounted(() => { timer = setInterval(next, 3500) })
+onUnmounted(() => clearInterval(timer))
+</script>
+
 <style scoped>
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 6rem;
   padding: 10rem 4rem 6rem;
   max-width: 1100px;
   margin: 0 auto;
   position: relative;
 }
+
+.hero-inner { display: flex; flex-direction: column; }
 
 .eyebrow {
   font-family: var(--font-mono);
@@ -53,7 +91,7 @@ h1 {
 
 .line-normal {
   font-family: var(--font-head);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 300;
   font-style: italic;
   color: var(--muted);
@@ -63,7 +101,7 @@ h1 {
 
 .line-name {
   font-family: var(--font-head);
-  font-size: clamp(5rem, 13vw, 10rem);
+  font-size: clamp(4rem, 10vw, 7.5rem);
   font-weight: 600;
   color: var(--text);
   line-height: 0.9;
@@ -73,12 +111,12 @@ h1 {
 .dot { color: var(--accent); }
 
 .desc {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.8;
-  max-width: 480px;
+  max-width: 420px;
   font-weight: 300;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   animation: fadeUp 0.6s 0.2s ease both;
 }
 
@@ -107,26 +145,82 @@ h1 {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.875rem;
-  font-weight: 400;
   transition: color 0.2s;
 }
 
 .btn-text:hover { color: var(--text); }
 
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 4/5;
+  background: var(--bg3);
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.slides img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, width 0.3s;
+}
+
+.dots .dot.active {
+  background: #fff;
+  width: 20px;
+}
+
+.bio p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
 .hero-deco {
   position: absolute;
   bottom: 3rem;
-  right: 4rem;
+  right: 0;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.deco-line {
-  width: 40px;
-  height: 1px;
-  background: var(--border);
-}
+.deco-line { width: 40px; height: 1px; background: var(--border); }
 
 .deco-label {
   font-family: var(--font-mono);
@@ -140,8 +234,14 @@ h1 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 768px) {
-  .hero { padding: 8rem 1.75rem 5rem; }
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 8rem 1.75rem 5rem;
+    gap: 3rem;
+  }
+  .hero-right { order: -1; }
+  .slider { aspect-ratio: 3/2; }
   .hero-deco { display: none; }
 }
 </style>
