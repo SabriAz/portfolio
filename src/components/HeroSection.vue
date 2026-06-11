@@ -86,8 +86,13 @@ function next() {
   current.value = (current.value + 1) % images.length
 }
 
+function resetTimer() {
+  clearInterval(timer)
+  timer = setInterval(next, 12000)
+}
+
 onMounted(() => {
-  timer = setInterval(next, 7000)
+  timer = setInterval(next, 12000)
 })
 
 onUnmounted(() => {
