@@ -76,6 +76,7 @@ onUnmounted(() => clearInterval(timer))
 }
 
 .hero-container {
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
   padding: 0 4rem;
