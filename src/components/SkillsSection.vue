@@ -50,13 +50,13 @@
 
 <style scoped>
 .skills {
-  padding: 7rem 4rem;
+  padding: 7rem 2rem;
   border-top: 1px solid var(--border);
   background: var(--bg2);
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
