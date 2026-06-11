@@ -28,10 +28,14 @@
           </p>
 
           <p>
-            I enjoy learning new programming languages, frameworks, and tools, and applying them in practical projects. I have a strong focus on continuous learning and improving my understanding of modern software development.
-
-            Languages: Dutch (native), English (fluent).
+            I enjoy learning new programming languages, frameworks, and tools, and applying them in practical projects.
+            I have a strong focus on continuous learning and improving my understanding of modern software development.
           </p>
+
+          <div class="languages">
+            <span class="lang-label">Languages</span>
+            <span class="lang-value">Dutch (native) · English (fluent)</span>
+          </div>
         </div>
 
         <div class="stats">
@@ -143,6 +147,27 @@
 .stat-l {
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+.languages {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lang-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lang-value {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
