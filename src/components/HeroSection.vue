@@ -67,11 +67,12 @@ onUnmounted(() => clearInterval(timer))
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 6rem;
+  gap: 4rem;
   padding: 10rem 4rem 6rem;
   max-width: 1100px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-inner { display: flex; flex-direction: column; }
@@ -167,7 +168,7 @@ h1 {
   overflow: hidden;
   border-radius: 16px;
   width: 100%;
-  max-width: 340px;
+  max-width: 380px;
   aspect-ratio: 3/4;
   background: var(--bg3);
 }
@@ -180,9 +181,10 @@ h1 {
 
 .slides img {
   min-width: 100%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center top;
 }
 
 .dots {
