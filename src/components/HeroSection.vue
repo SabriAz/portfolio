@@ -66,19 +66,16 @@ onUnmounted(() => clearInterval(timer))
 
 <style scoped>
 .hero {
+  width: 100%;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4rem;
-  padding: 8rem 4rem 4rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0;
   position: relative;
 }
 
 .hero-container {
-  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
   padding: 0 4rem;
@@ -180,8 +177,7 @@ h1 {
   overflow: hidden;
   border-radius: 16px;
   width: 100%;
-  max-height: 420px;
-  aspect-ratio: 3/4;
+  aspect-ratio: 4/5;
   background: var(--bg3);
 }
 
