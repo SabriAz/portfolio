@@ -19,8 +19,7 @@
     <div class="hero-right">
       <div class="slider">
         <div class="slides" :style="{ transform: `translateX(-${current * 100}%)` }">
-          <img v-for="n in 4" :key="n" :src="`/src/assets/sabri_${n}.jpeg`" :alt="`Photo ${n}`" />
-        </div>
+          <img v-for="(img, i) in images" :key="i" :src="img" :alt="`Photo ${i + 1}`" />        </div>
         <div class="dots">
           <button
               v-for="n in 4"
@@ -45,7 +44,12 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import img1 from '@/assets/sabri_1.jpeg'
+import img2 from '@/assets/sabri_2.jpeg'
+import img3 from '@/assets/sabri_3.jpeg'
+import img4 from '@/assets/sabri_4.jpeg'
 
+const images = [img1, img2, img3, img4]
 const current = ref(0)
 let timer
 
