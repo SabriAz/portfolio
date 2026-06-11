@@ -1,40 +1,65 @@
 <template>
   <section id="hero" class="hero">
     <div class="hero-container">
+
+      <!-- LEFT -->
       <div class="hero-left">
-        <p class="eyebrow">Software developer & student</p>
+        <p class="eyebrow">Software Engineering Student & Full-Stack Developer</p>
+
         <h1>
           <span class="line-normal">Hello, I'm</span>
           <span class="line-name">Sabri<span class="accent-dot">.</span></span>
         </h1>
+
         <p class="desc">
-          I build full-stack web apps and mobile experiences —<br />
-          thoughtful code, clean interfaces, real results.
+          I build web and mobile applications with a focus on clean design,
+          practical solutions, and real-world impact.
         </p>
+
         <div class="cta-row">
-          <a href="#projects" class="btn-primary">See my work</a>
+          <a href="#projects" class="btn-primary">View Projects</a>
           <a href="#contact" class="btn-text">Get in touch →</a>
         </div>
       </div>
 
+      <!-- RIGHT -->
       <div class="hero-right">
+
         <div class="slider">
-          <div class="slides" :style="{ transform: `translateX(-${current * 100}%)` }">
-            <img v-for="(img, i) in images" :key="i" :src="img" :alt="`Photo ${i + 1}`" />
+          <div
+              class="slides"
+              :style="{ transform: `translateX(-${current * 100}%)` }"
+          >
+            <img
+                v-for="(img, i) in images"
+                :key="i"
+                :src="img"
+                :alt="`Photo ${i + 1}`"
+            />
           </div>
+
           <div class="dots">
             <button
-                v-for="n in 4"
+                v-for="n in images.length"
                 :key="n"
                 :class="['dot-btn', { active: current === n - 1 }]"
                 @click="current = n - 1"
             />
           </div>
         </div>
+
         <div class="bio">
-          <p>I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden. I build full-stack apps, mobile experiences, and everything in between.</p>
-          <p>Outside of code I'm into cooking, gaming, and good music — I bring that same curiosity to everything I build.</p>
+          <p>
+            I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden.
+            I build full-stack apps, mobile experiences, and everything in between.
+          </p>
+
+          <p>
+            Outside of code I'm into cooking, gaming, and music — I bring that same curiosity
+            into everything I build.
+          </p>
         </div>
+
       </div>
     </div>
 
@@ -54,24 +79,28 @@ import img4 from '@/assets/sabri_4.jpeg'
 
 const images = [img1, img2, img3, img4]
 const current = ref(0)
+
 let timer
 
 function next() {
-  current.value = (current.value + 1) % 4
+  current.value = (current.value + 1) % images.length
 }
 
-onMounted(() => { timer = setInterval(next, 7000) })
-onUnmounted(() => clearInterval(timer))
+onMounted(() => {
+  timer = setInterval(next, 7000)
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
 </script>
 
 <style scoped>
 .hero {
-  max-height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6rem 0;
+  align-items: center;
   position: relative;
 }
 
@@ -86,7 +115,10 @@ onUnmounted(() => clearInterval(timer))
   align-items: center;
 }
 
-.hero-left { display: flex; flex-direction: column; }
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
 
 .eyebrow {
   font-family: var(--font-mono);
@@ -95,14 +127,12 @@ onUnmounted(() => clearInterval(timer))
   color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  animation: fadeUp 0.6s ease both;
 }
 
 h1 {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
-  animation: fadeUp 0.6s 0.1s ease both;
 }
 
 .line-normal {
@@ -130,17 +160,15 @@ h1 {
   font-size: 0.975rem;
   color: var(--muted);
   line-height: 1.8;
-  max-width: 400px;
+  max-width: 420px;
   font-weight: 300;
   margin-bottom: 2.5rem;
-  animation: fadeUp 0.6s 0.2s ease both;
 }
 
 .cta-row {
   display: flex;
   align-items: center;
   gap: 2rem;
-  animation: fadeUp 0.6s 0.3s ease both;
 }
 
 .btn-primary {
@@ -151,34 +179,36 @@ h1 {
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: opacity 0.2s, transform 0.2s;
 }
 
-.btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
+.btn-primary:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
 
 .btn-text {
   color: var(--muted);
   text-decoration: none;
   font-size: 0.875rem;
-  transition: color 0.2s;
 }
 
-.btn-text:hover { color: var(--text); }
+.btn-text:hover {
+  color: var(--text);
+}
 
 .hero-right {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  animation: fadeUp 0.6s 0.2s ease both;
+  gap: 1.5rem;
 }
 
+/* slider */
 .slider {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
   width: 100%;
-  max-width: 350px;
+  max-width: 360px;
   aspect-ratio: 4 / 5;
   background: var(--bg3);
 }
@@ -191,7 +221,6 @@ h1 {
 
 .slides img {
   min-width: 100%;
-  flex-shrink: 0;
   height: 100%;
   object-fit: cover;
   object-position: center top;
@@ -209,17 +238,15 @@ h1 {
 .dot-btn {
   width: 6px;
   height: 6px;
-  border-radius: 100px;
-  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
   border: none;
+  background: rgba(255,255,255,0.4);
   cursor: pointer;
-  padding: 0;
-  transition: background 0.3s, width 0.3s;
 }
 
 .dot-btn.active {
-  background: #fff;
-  width: 20px;
+  width: 18px;
+  background: white;
 }
 
 .bio p {
@@ -227,7 +254,7 @@ h1 {
   color: var(--muted);
   line-height: 1.8;
   font-weight: 300;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-deco {
@@ -239,7 +266,11 @@ h1 {
   gap: 12px;
 }
 
-.deco-line { width: 40px; height: 1px; background: var(--border); }
+.deco-line {
+  width: 40px;
+  height: 1px;
+  background: var(--border);
+}
 
 .deco-label {
   font-family: var(--font-mono);
@@ -248,20 +279,19 @@ h1 {
   letter-spacing: 0.1em;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (max-width: 900px) {
-  .hero { padding: 8rem 0 4rem; }
   .hero-container {
     grid-template-columns: 1fr;
     padding: 0 1.75rem;
     gap: 2.5rem;
   }
-  .hero-right { order: -1; }
-  .slider { aspect-ratio: 3/2; }
-  .hero-deco { display: none; }
+
+  .hero-right {
+    order: -1;
+  }
+
+  .hero-deco {
+    display: none;
+  }
 }
 </style>
