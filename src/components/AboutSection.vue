@@ -28,8 +28,9 @@
           </p>
 
           <p>
-            Outside of development you'll usually find me gaming,
-            cooking, listening to music, or exploring new technologies.
+            I enjoy learning new programming languages, frameworks, and tools, and applying them in practical projects. I have a strong focus on continuous learning and improving my understanding of modern software development.
+
+            Languages: Dutch (native), English (fluent).
           </p>
         </div>
 

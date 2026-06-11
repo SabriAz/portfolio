@@ -55,8 +55,7 @@
           </p>
 
           <p>
-            Outside of code I'm into cooking, gaming, and music — I bring that same curiosity
-            into everything I build.
+            Outside of computer science I'm into music, gaming, and cats. I’m easy to work with and focused on clear, practical communication.
           </p>
         </div>
 
