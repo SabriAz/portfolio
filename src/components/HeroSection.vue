@@ -74,9 +74,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import img1 from '@/assets/sabri_1.jpeg'
 import img2 from '@/assets/sabri_2.jpeg'
 import img3 from '@/assets/sabri_3.jpeg'
-import img4 from '@/assets/sabri_4.jpeg'
 
-const images = [img1, img2, img3, img4]
+const images = [img1, img2, img3]
 const current = ref(0)
 
 let timer
