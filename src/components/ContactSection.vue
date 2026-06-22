@@ -10,17 +10,17 @@
           <h2>Let's build<br /><em>something good.</em></h2>
           <p>Open to internships, freelance work, and collaborations. Feel free to reach out.</p>
           <div class="links">
-            <a href="mailto:sabri@example.com" class="link-row">
+            <a href="mailto:sabri@sabriazzouz.com" class="link-row">
               <span class="link-label">Email</span>
-              <span class="link-val">sabri.azzouz06@gmail.com →</span>
+              <span class="link-val"> →</span>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="link-row">
+            <a href="https://github.com/SabriAz" target="_blank" rel="noopener" class="link-row">
               <span class="link-label">GitHub</span>
-              <span class="link-val">https://github.com/SabriAz →</span>
+              <span class="link-val"> →</span>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="link-row">
+            <a href="https://linkedin.com/in/sabri-azzouz" target="_blank" rel="noopener" class="link-row">
               <span class="link-label">LinkedIn</span>
-              <span class="link-val">www.linkedin.com/in/sabri-azzouz →</span>
+              <span class="link-val"> →</span>
             </a>
           </div>
         </div>
