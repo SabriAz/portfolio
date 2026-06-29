@@ -1,6 +1,12 @@
 services:
   portfolio:
     build: .
-    ports:
-      - "3000:80"
     restart: always
+    networks:
+      - web
+    expose:
+      - "80"
+
+networks:
+  web:
+    external: true
