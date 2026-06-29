@@ -4,8 +4,8 @@ services:
     restart: always
     networks:
       - web
-    expose:
-      - "80"
+    ports:
+      - "3000:80"
 
 networks:
   web:
