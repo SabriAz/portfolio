@@ -37,7 +37,6 @@
                 :alt="`Photo ${i + 1}`"
             />
           </div>
-
           <div class="dots">
             <button
                 v-for="n in images.length"
@@ -47,7 +46,6 @@
             />
           </div>
         </div>
-
         <div class="bio">
           <p>
             I'm Sabri, a second-year software engineering student at Hogeschool Leiden,
