@@ -10,10 +10,6 @@
           <h2>Let's build<br /><em>something good.</em></h2>
           <p>Open to internships, freelance work, and collaborations. Feel free to reach out.</p>
           <div class="links">
-            <a href="mailto:sabri@sabriazzouz.com" class="link-row">
-              <span class="link-label">Email</span>
-              <span class="link-val"> →</span>
-            </a>
             <a href="https://github.com/SabriAz" target="_blank" rel="noopener" class="link-row">
               <span class="link-label">GitHub</span>
               <span class="link-val"> →</span>
@@ -37,9 +33,10 @@
             <label>Message</label>
             <textarea v-model="form.message" rows="5" placeholder="Hey Sabri, let's talk..." required></textarea>
           </div>
-          <button type="submit" :class="['submit', { sent }]">
-            {{ sent ? 'Sent ✓' : 'Send message' }}
+          <button type="submit" :class="['submit', { sent, sending }]" :disabled="sending">
+            {{ sent ? 'Sent ✓' : sending ? 'Sending...' : 'Send message' }}
           </button>
+          <p v-if="error" class="error-msg">Something went wrong. Try emailing me directly at sabri@sabriazzouz.com.</p>
         </form>
       </div>
     </div>
@@ -48,14 +45,46 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqevyqnl'
+
 const form = reactive({ name: '', email: '', message: '' })
 const sent = ref(false)
-function handleSubmit() {
-  sent.value = true
-  setTimeout(() => {
-    sent.value = false
-    form.name = ''; form.email = ''; form.message = ''
-  }, 3000)
+const sending = ref(false)
+const error = ref(false)
+
+async function handleSubmit() {
+  sending.value = true
+  error.value = false
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        message: form.message
+      })
+    })
+
+    if (res.ok) {
+      sent.value = true
+      form.name = ''
+      form.email = ''
+      form.message = ''
+      setTimeout(() => { sent.value = false }, 3000)
+    } else {
+      error.value = true
+    }
+  } catch (e) {
+    error.value = true
+  } finally {
+    sending.value = false
+  }
 }
 </script>
 
@@ -187,6 +216,17 @@ input::placeholder, textarea::placeholder { color: var(--border); }
 
 .submit:hover { opacity: 0.75; transform: translateY(-1px); }
 .submit.sent { background: var(--accent); }
+
+.error-msg {
+  font-size: 0.8rem;
+  color: #c0392b;
+  margin-top: -0.5rem;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 @media (max-width: 768px) {
   .contact { padding: 5rem 1.75rem; }
