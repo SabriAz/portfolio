@@ -37,24 +37,24 @@
 <script setup>
 const projects = [
   {
-    title: 'Binbendo',
+    title: 'Binbendo | Solo',
     desc: 'Full-stack Nintendo-themed webshop. Angular frontend, Spring Boot backend, JWT auth, PostgreSQL database, and nginx deployment on a self-managed Linux VPS.',
     stack: ['Angular', 'Spring Boot', 'PostgreSQL'],
     link: 'https://binbendo.sabriazzouz.com',
   },
   {
-    title: 'Educatieve Game',
+    title: 'Educatieve Game | Team',
     desc: 'Mobile educational game built in Flutter for a real client. Intro screens, fade transitions, countdown timers, and validated through usability testing with real users.',
     stack: ['Flutter', 'Dart'],
     link: 'https://game.sabriazzouz.com',
   },
   {
-    title: 'Alrijne',
+    title: 'Alrijne | Team',
     desc: 'Mobile information app for Alrijne hospital with a working chatbot for patient questions. Built in Flutter with a Python backend handling the conversational logic.',
     stack: ['Flutter', 'Python'],
   },
   {
-    title: 'Data Dashboard',
+    title: 'Data Dashboard | Solo',
     desc: 'Looker Studio dashboard connected to a Python notebook running K-Means clustering, with an LLM API call generating automated insights from the clustered data.',
     stack: ['Python', 'K-Means', 'Looker Studio'],
   },
