@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-inner">
         <span class="logo"><em>Sabri</em></span>
-        <span class="copy">© {{ new Date().getFullYear() }} — Built with Vue 3</span>
+        <span class="copy">© {{ new Date().getFullYear() }}</span>
         <span class="mono">Hogeschool Leiden</span>
       </div>
     </div>

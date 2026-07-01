@@ -60,10 +60,20 @@
             <span class="stat-l">Web & Mobile</span>
           </div>
 
+
+          <a href="/CV.pdf"
+          download
+          class="cv-download"
+          >
+          <span class="cv-text">Download resume</span>
+          <span class="cv-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M12 5v11m0 0l-4-4m4 4l4-4M5 19h14" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </a>
         </div>
-
       </div>
-
     </div>
   </section>
 </template>
@@ -149,6 +159,54 @@
   color: var(--muted);
 }
 
+.cv-download {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.cv-download:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.cv-text {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cv-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.cv-download:hover .cv-icon {
+  border-color: var(--bg);
+}
+
+.cv-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
 .languages {
   margin-top: 1rem;
   display: flex;
@@ -183,6 +241,11 @@
 
   .stats {
     grid-template-columns: 1fr 1fr;
+  }
+
+
+  .cv-download {
+      grid-column: 1 / -1;
   }
 
 }

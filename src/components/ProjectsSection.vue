@@ -13,7 +13,20 @@
             <p>{{ p.desc }}</p>
           </div>
           <div class="project-stack">
-            <span v-for="s in p.stack" :key="s">{{ s }}</span>
+            <div class="project-tags">
+              <span v-for="s in p.stack" :key="s">{{ s }}</span>
+            </div>
+            <a v-if="p.link"
+            :href="p.link"
+            target="_blank"
+            rel="noopener"
+            class="project-link"
+            aria-label="Bekijk project"
+            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            </a>
           </div>
         </article>
       </div>
@@ -25,25 +38,28 @@
 const projects = [
   {
     title: 'Binbendo',
-    desc: 'Full-stack Nintendo-themed webshop. Angular frontend, Spring Boot backend, JWT auth, PostgreSQL database, admin panel, and nginx deployment on a Linux VPS.',
+    desc: 'Full-stack Nintendo-themed webshop. Angular frontend, Spring Boot backend, JWT auth, PostgreSQL database, and nginx deployment on a self-managed Linux VPS.',
     stack: ['Angular', 'Spring Boot', 'PostgreSQL'],
-  },
-  {
-    title: 'Data Dashboard',
-    desc: 'Looker Studio dashboard connected to a Python notebook running K-Means clustering and an LLM API call for automated insight generation.',
-    stack: ['Python', 'K-Means', 'Looker Studio'],
+    link: 'https://binbendo.sabriazzouz.com',
   },
   {
     title: 'Educatieve Game',
-    desc: 'Mobile educational game built in Flutter for a real client. Intro screens, fade transitions, countdown timers, and usability tested with real participants.',
+    desc: 'Mobile educational game built in Flutter for a real client. Intro screens, fade transitions, countdown timers, and validated through usability testing with real users.',
     stack: ['Flutter', 'Dart'],
+    link: 'https://game.sabriazzouz.com',
   },
   {
-    title: 'Portfolio',
-    desc: 'This site — designed and built from scratch with Vue 3 and Vite. Clean, warm, and actually readable.',
-    stack: ['Vue 3', 'Vite'],
+    title: 'Alrijne',
+    desc: 'Mobile information app for Alrijne hospital with a working chatbot for patient questions. Built in Flutter with a Python backend handling the conversational logic.',
+    stack: ['Flutter', 'Python'],
+  },
+  {
+    title: 'Data Dashboard',
+    desc: 'Looker Studio dashboard connected to a Python notebook running K-Means clustering, with an LLM API call generating automated insights from the clustered data.',
+    stack: ['Python', 'K-Means', 'Looker Studio'],
   },
 ]
+
 </script>
 
 <style scoped>
@@ -122,13 +138,21 @@ h3 {
 
 .project-stack {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
   padding-top: 4px;
 }
 
-.project-stack span {
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.project-tags span {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--muted);
@@ -136,12 +160,45 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 100px;
   white-space: nowrap;
+  margin-bottom: 1.5rem;
+}
+
+.project-link {
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 100rem;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.project-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+.project-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  transform: translate(1px, -1px);
 }
 
 @media (max-width: 768px) {
   .projects { padding: 5rem 1.75rem; }
   .project-row { grid-template-columns: 40px 1fr; }
-  .project-stack { display: none; }
+  .project-tags { display: none; }
+  .project-stack {
+    grid-row: 2;
+    grid-column: 2;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+  }
   .project-row:hover { margin: 0; padding: 2.25rem 0; background: transparent; }
 }
 </style>
