@@ -50,12 +50,13 @@
 
         <div class="bio">
           <p>
-            I'm Sabri Azzouz, a second-year software engineering student at Hogeschool Leiden.
-            I build full-stack apps, mobile experiences, and everything in between.
+            I'm Sabri, a second-year software engineering student at Hogeschool Leiden,
+            currently focused on full-stack development.
           </p>
 
           <p>
-            Outside of computer science I'm into music, gaming, and cats. I’m easy to work with and focused on clear, practical communication.
+            Outside of computer science I'm into music, gaming, and cats. I'm easy to
+            work with and focused on clear, practical communication.
           </p>
         </div>
 

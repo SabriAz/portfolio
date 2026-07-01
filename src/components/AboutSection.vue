@@ -16,20 +16,22 @@
           </h2>
 
           <p>
-            I'm a second-year Software Engineering student at
-            Hogeschool Leiden with a strong interest in full-stack
-            development and mobile applications.
+            I like turning ideas into things people can actually use, whether that's a
+            webshop, a Flutter app, or a backend system that ties it all together.
+            I've built and deployed several projects end-to-end, from database to
+            production server.
           </p>
 
           <p>
-            I enjoy turning ideas into usable products, whether that's
-            building a webshop, developing a Flutter application, or
-            working with backend systems and databases.
+            I'm naturally curious and precise, and I pick up new tools and frameworks
+            quickly. I work well in teams and adapt easily to different roles or
+            project setups, which comes in handy when requirements shift halfway
+            through a project.
           </p>
 
           <p>
-            I enjoy learning new programming languages, frameworks, and tools, and applying them in practical projects.
-            I have a strong focus on continuous learning and improving my understanding of modern software development.
+            I care about getting the details right, sometimes to a fault, but I'd
+            rather spend a bit more time on something than ship it half-finished.
           </p>
 
           <div class="languages">
