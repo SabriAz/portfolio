@@ -25,7 +25,11 @@
       <!-- RIGHT -->
       <div class="hero-right">
 
-        <div class="slider">
+        <div
+            class="slider"
+            @touchstart="onTouchStart"
+            @touchend="onTouchEnd"
+        >
           <div
               class="slides"
               :style="{ transform: `translateX(-${current * 100}%)` }"
@@ -37,12 +41,13 @@
                 :alt="`Photo ${i + 1}`"
             />
           </div>
+
           <div class="dots">
             <button
                 v-for="n in images.length"
                 :key="n"
                 :class="['dot-btn', { active: current === n - 1 }]"
-                @click="current = n - 1"
+                @click="current = n - 1; resetTimer()"
             />
           </div>
         </div>
@@ -83,6 +88,10 @@ function next() {
   current.value = (current.value + 1) % images.length
 }
 
+function prev() {
+  current.value = (current.value - 1 + images.length) % images.length
+}
+
 function resetTimer() {
   clearInterval(timer)
   timer = setInterval(next, 9000)
@@ -95,6 +104,34 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(timer)
 })
+
+// swipe handling
+let touchStartX = 0
+let touchEndX = 0
+
+function onTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX
+}
+
+function onTouchEnd(e) {
+  touchEndX = e.changedTouches[0].screenX
+  handleSwipe()
+}
+
+function handleSwipe() {
+  const diff = touchStartX - touchEndX
+  const threshold = 40 // minimale swipe-afstand in px
+
+  if (Math.abs(diff) < threshold) return
+
+  if (diff > 0) {
+    next() // swipe naar links = volgende foto
+  } else {
+    prev() // swipe naar rechts = vorige foto
+  }
+
+  resetTimer() // reset de auto-advance timer na handmatige swipe
+}
 </script>
 
 <style scoped>
